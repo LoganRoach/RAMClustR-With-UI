@@ -145,8 +145,8 @@ shinyServer <- function(input, output){
       #Prepare "traditional" formatted table of sample x abundance
       wide_frame <- final_frame %>%
         pivot_wider(names_from = Sample, values_from = vol)
-      MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
-      MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
+      #MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
+      #MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
       #Convert to csv file for RAMClust, have not rewritten to take direct object inputs
       ramclustR_file <- input_file2 %>%
         select(matches(samples)) %>%
@@ -271,8 +271,8 @@ shinyServer <- function(input, output){
         rename(b_v = `blank_vol`) %>% 
         select(-matches(as.character(blanks))) %>% 
         pivot_longer(matches(as.character(samples)), names_to = "Sample", values_to = "vol") %>%
-        #left_join(IS_abundance) %>%                                                   #Combine IS measurement data as well
-        #mutate(vol = vol / adjust) %>%                                                #Adjust intensity information using IS scalar value
+        left_join(IS_abundance) %>%                                                   #Combine IS measurement data as well
+        mutate(vol = vol / adjust) %>%                                                #Adjust intensity information using IS scalar value
         left_join(feature_info) %>%                                                   #Merge back feature annotation information
         rename(blank_vol = `b_v`) %>% 
         filter(max_vol > 5*blank_vol)
@@ -303,8 +303,8 @@ shinyServer <- function(input, output){
       #Prepare "traditional" formatted table of sample x abundance
       wide_frame <- final_frame %>%
         pivot_wider(names_from = Sample, values_from = vol)
-      MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
-      MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
+      #MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
+      #MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
       #Convert to csv file for RAMClust, have not rewritten to take direct object inputs
       ramclustR_file <- input_file2 %>%
         select(matches(samples)) %>%
@@ -466,8 +466,8 @@ shinyServer <- function(input, output){
       #Prepare "traditional" formatted table of sample x abundance
       wide_frame <- final_frame %>%
         pivot_wider(names_from = Sample, values_from = vol)
-      MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
-      MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
+      #MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
+      #MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
       #Convert to csv file for RAMClust, have not rewritten to take direct object inputs
       ramclustR_file <- input_file2 %>%
         select(matches(samples)) %>%
@@ -612,8 +612,8 @@ shinyServer <- function(input, output){
         rename(b_v = `blank_vol`) %>% 
         select(-matches(as.character(blanks))) %>% 
         pivot_longer(matches(as.character(samples)), names_to = "Sample", values_to = "vol") %>%
-        #left_join(IS_abundance) %>%                                                   #Combine IS measurement data as well
-        #mutate(vol = vol / adjust) %>%                                                #Adjust intensity information using IS scalar value
+        left_join(IS_abundance) %>%                                                   #Combine IS measurement data as well
+        mutate(vol = vol / adjust) %>%                                                #Adjust intensity information using IS scalar value
         left_join(feature_info) %>%                                                   #Merge back feature annotation information
         rename(blank_vol = `b_v`) %>% 
         filter(max_vol > 5*blank_vol)
@@ -644,8 +644,8 @@ shinyServer <- function(input, output){
       #Prepare "traditional" formatted table of sample x abundance
       wide_frame <- final_frame %>%
         pivot_wider(names_from = Sample, values_from = vol)
-      MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
-      MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
+      #MIDPOINT_ANALYSIS2 <- paste0("Analysis_midpoint_",file_name,".csv")
+      #MIDPOINT <- write_csv(wide_frame, MIDPOINT_ANALYSIS2, na = "")
       #Convert to csv file for RAMClust, have not rewritten to take direct object inputs
       ramclustR_file <- input_file2 %>%
         select(matches(samples)) %>%
